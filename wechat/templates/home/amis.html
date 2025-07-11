@@ -1,0 +1,50 @@
+{%  extends 'base.html' %}
+
+{%block titre%}
+  <title>amis</title>
+{%endblock%}
+
+
+{%block contenu%}
+{%include 'header.html' %}
+<div class="container my-5" style="max-width: 960px; font-family: 'Segoe UI', sans-serif;">
+  <!-- Titre -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-primary mb-0">👥 Mes amis <span class="badge bg-primary-subtle text-dark ms-2">{{ nb }}</span></h2>
+    <a class="btn btn-outline-secondary" href="{%  url 'ajouter' user.id %}">➕ Ajouter des amis</a>
+  </div>
+
+  <!-- Ligne de séparation -->
+  <hr class="mb-4">
+
+  <!-- Tableau stylisé -->
+  <div class="table-responsive shadow-sm rounded-4 overflow-hidden">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom</th>
+          <th scope="col" class="text-end">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for friend in friends %}
+          <tr>
+            <td>{{ friend.prenom }}</td>
+            <td>{{ friend.nom }}</td>
+            <td class="text-end">
+              <a class="btn btn-sm btn-outline-primary rounded-pill px-3" href="{% url 'chat' friend.id %}">💬 Message</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3" class="text-center text-muted py-4">Aucun ami trouvé.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{%include 'footer.html' %}
+{%endblock%}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block titre %}
+<title>chat</title>
+{% endblock %}
+
+
+   
+{% block contenu %}
+{% include 'header.html' %}
+<div class="container  w-lg-50  w-md-75">
+    <h5> Discussion avec: {{friend.prenom}}  </h5>
+    <hr>
+    {% comment %} on verifie si la conversation a des messages  {% endcomment %}
+{% if messages %}  
+     {% for message in messages %}
+{% if message.expediteur.id == friend.id %}
+<div class="d-flex justify-content-start mb-2">
+    <div class="card bg-dark text-white p-2" style="max-width: 75%; border-radius: 0.5rem 1rem 0.5rem 0.25rem;">
+        <div class="card-body p-2">
+            <div class="mb-1">
+                <strong>{{ message.expediteur.prenom }}</strong> : {{ message.contenu }}
+            </div>
+            <div class="text-end small" style="color: #cccccc;">  <!-- gris clair -->
+                {{ message.date|date:"H:i" }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{%elif message.expediteur.id ==  user.id %}    
+<div class="d-flex justify-content-end mb-2">
+    <div class="card bg-success text-white p-2" style="max-width: 75%; border-radius: 1rem 0.5rem 0.25rem 0.5rem;">
+        <div class="card-body p-2">
+            <div class="mb-1 text-end">
+               <b> Vous </b>: {{ message.contenu }}
+            </div>
+            <div class="text-end small" style="color: #d4fdd4;">  <!-- vert clair -->
+                {{ message.date|date:"H:i" }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+     {% endfor %}
+
+{%else%}
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+  <strong>Salut  {{user.prenom}} !</strong> Vos dicussions avec <b> {{friend.prenom}} </b> Apparaitront ic !
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+
+
+    <hr>
+<form action="{% url 'chat' friend.id %}" method="post" class="form m-3">
+    {% csrf_token %}
+    <div class="input-group">
+        <textarea name="message" class="form-control rounded-pill px-3 py-2" placeholder="Écrivez un message ici..." rows="1" style="resize: none;"></textarea>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-success rounded-pill ml-2 px-4">
+                Envoyer
+            </button>
+        </div>
+    </div>
+</form>
+
+</div>
+{% include 'footer.html' %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block titre %}
+<title>forum</title>
+{% endblock %}
+
+{% block contenu %}
+{% include 'header.html' %}
+
+<div class="container my-5" style="max-width: 800px;">
+    <h3 class="mb-4 fw-bold border-bottom pb-2 text-primary">🗣️ Les messages du forum</h3>
+
+    <!-- FORMULAIRE DE PUBLICATION -->
+    <div class="card shadow-sm border-0 rounded-4 p-4 mb-5">
+        <h5 class="mb-3">💬 Publier un message</h5>
+        <form method="post" action="{% url 'forum' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <textarea name="contenu" class="form-control rounded-3 shadow-sm"
+                          rows="4" placeholder="Écris ton message ici..." required></textarea>
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-primary rounded-pill px-4">Envoyer</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- AFFICHAGE DES MESSAGES -->
+    {% for message in messages %}
+    <div class="card mb-4 shadow-sm border-0 rounded-4 p-3">
+        <div class="d-flex align-items-start">
+            <img src="/static/images/photo.jpg" alt="Profil"
+                 class="rounded-circle border me-3" style="width: 60px; height: 60px; object-fit: cover;">
+            <div>
+
+            {% if message.auteur.id == user.id %}
+            <h5 class="fw-semibold mb-1 text-dark  ml-4">Vous</h5>
+            {%else%}
+            <h5 class="fw-semibold mb-1 text-dark  ml-4">{{ message.auteur.prenom }}</h5>
+            {% endif %}  
+                
+                <p class="mb-2 text-body m-3" style="text-align: justify; ">{{ message.contenu }}</p>
+                <small class="text-muted">Posté le {{ message.date|date:"d M Y à H:i" }}</small>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">Aucun message pour l'instant.</p>
+    {% endfor %}
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}

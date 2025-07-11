@@ -1,0 +1,52 @@
+{%  extends 'base.html' %}
+
+{%block titre%}
+  <title>amis</title>
+{%endblock%}
+
+
+{%block contenu%}
+{%include 'header.html' %}
+
+
+<div class="container my-5" style="max-width: 960px;">
+  <!-- Titre principal -->
+  <h4 class="fw-bold mb-3 text-dark">
+    👋 Salut {{ user.prenom }}&nbsp;, voici des personnes que vous pourriez connaître :
+  </h4>
+  <hr class="mb-4">
+
+  <!-- Tableau stylisé -->
+  <div class="table-responsive shadow-sm rounded-4 overflow-hidden">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light">
+        <tr>
+          <th scope="col">Prénom</th>
+          <th scope="col">Nom</th>
+          <th scope="col" class="text-end">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for person in users %}
+          <tr>
+            <td class="fw-medium">{{ person.prenom }}</td>
+            <td>{{ person.nom }}</td>
+            <td class="text-end">
+              <form action="{% url 'ajouter' person.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button class="btn btn-sm btn-outline-success rounded-pill px-3">➕ Ajouter</button>
+              </form>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3" class="text-center text-muted py-4">Aucune suggestion pour le moment.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+ 
+{%include 'footer.html' %}
+{%endblock%}

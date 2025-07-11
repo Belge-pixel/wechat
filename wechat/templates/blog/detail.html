@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block titre %}
+<title>blog</title>
+{% endblock %}
+
+
+{%block style%}
+<style>
+
+
+</style>
+{%endblock%}
+
+
+{% block contenu %}
+
+{% include 'header.html' %}
+
+<div class="container my-5" style="max-width: 800px; font-family: 'Georgia', serif;">
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden bg-white">
+  
+      <!-- Image principale -->
+      <div class="text-center bg-light">
+        <img src="/static/images/photo.jpg" alt="Image de l'article"
+          class="img-fluid rounded-0 w-100" style="max-height: 480px; object-fit: cover; transition: transform 0.5s ease;"
+          onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+  
+      <!-- Contenu -->
+      <div class="card-body p-5">
+  
+        <!-- Titre -->
+        <h1 class="fw-bold display-5 text-center mb-4 text-dark">
+          {{ article.titre }}
+        </h1>
+  
+        <!-- Auteur et date -->
+        <div class="d-flex align-items-center justify-content-left gap-3 mb-4 text-muted small">
+          <img src="/static/images/background.jpg" alt="Avatar"
+            class="rounded-circle border border-secondary" width="50" height="50">
+          <div>
+            <div class="fw-semibold ml-3">{{ article.auteur.prenom }}</div>
+            <div  class="ml-3">{{ article.date|date:"d F Y" }}</div>
+          </div>
+        </div>
+  
+        <!-- Corps de l'article -->
+        <article class="fs-5 lh-lg text-justify" style="color: #333;">
+          {{ article.contenu }}
+        </article>
+  
+        <!-- Barre de réaction -->
+        <div class="mt-5 pt-4 border-top d-flex flex-wrap justify-content-between align-items-center gap-2">
+          <!-- Tags -->
+          <div>
+            <span class="badge bg-body-secondary text-dark px-3 py-2 me-1">#{{ article.categorie }}</span>
+            <span class="badge bg-body-secondary text-dark px-3 py-2">#{{ article.tag1 }}</span>
+          </div>
+  
+          <!-- Boutons -->
+          <div>
+            <button class="btn btn-outline-dark rounded-pill px-4 me-2">👍 J'aime</button>
+            <button class="btn btn-outline-secondary rounded-pill px-4">💬 Commenter</button>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  
+  
+
+{% include 'footer.html' %}
+{% endblock %}

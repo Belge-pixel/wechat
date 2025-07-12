@@ -1,0 +1,130 @@
+{%  extends 'base.html' %}
+
+{% block titre %}
+<title>inscription</title>
+{% endblock %}
+
+
+{%  block contenu  %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card shadow border-0">
+          <div class="card-header bg-primary text-white text-center fs-4 fw-bold">
+            Formulaire d'inscription
+          </div>
+          <div class="card-body">
+
+            <form action="{% url 'inscription' %}" method="post"  enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <!-- Prénom -->
+              <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" required>
+              </div>
+
+              <!-- Nom -->
+              <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom" required>
+              </div>
+
+              <!-- Date de naissance -->
+              <div class="mb-3">
+                <label for="naissance" class="form-label">Date de naissance</label>
+                <input type="date" class="form-control" id="naissance" name="naissance" required>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Adresse email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+
+              <!-- Mot de passe -->
+              <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+
+              <!-- Téléphone -->
+              <div class="mb-3">
+                <label for="telephone" class="form-label">Téléphone</label>
+                <input type="tel" class="form-control" id="telephone" name="telephone">
+              </div>
+
+              <!-- Domaine -->
+              <div class="mb-3">
+                <label for="domaine" class="form-label">Domaine</label>
+                <input type="text" class="form-control" id="domaine" name="domaine" placeholder="Ex: Informatique, Droit, Santé..." required>
+              </div>
+
+              <!-- Profil -->
+              <div class="mb-3">
+  <label for="profile" class="form-label">Photo de profil</label>
+  <input type="file" class="form-control" name="profile" id="profile" accept="image/*" required>
+</div>
+
+
+              <!-- Adresse -->
+              <div class="mb-3">
+                <label for="adresse" class="form-label">Adresse</label>
+                <input type="text" class="form-control" id="adresse" name="adresse">
+              </div>
+
+              <!-- Ville -->
+              <div class="mb-3">
+                <label for="ville" class="form-label">Ville</label>
+                <input type="text" class="form-control" id="ville" name="ville">
+              </div>
+
+
+              <!-- Pays -->
+              <div class="mb-3">
+                <label for="pays" class="form-label">Pays</label>
+                <input type="text" class="form-control" id="pays" name="pays" value="France">
+              </div>
+
+              <!-- Genre -->
+              <div class="mb-3">
+                <label class="form-label">Genre</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="genre" id="homme" value="Homme" required>
+                  <label class="form-check-label" for="homme">Homme</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="genre" id="femme" value="Femme">
+                  <label class="form-check-label" for="femme">Femme</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="genre" id="autre" value="Autre">
+                  <label class="form-check-label" for="autre">Autre</label>
+                </div>
+              </div>
+
+              <!-- Conditions d'utilisation -->
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="cgu"  name = 'conditions' required>
+                <label class="form-check-label" for="cgu">
+                  J'accepte les <a href="#">conditions générales d'utilisation</a>.
+                </label>
+              </div>
+
+              <!-- Bouton -->
+              <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success px-4">S'inscrire</button>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+{% include 'footer.html' %}
+{%  endblock %} 

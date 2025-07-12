@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block titre %}
+<title>home</title>
+{% endblock %}
+
+{% block contenu %}
+{% include 'header.html' %}
+
+<div class="container py-5 home-container bg-light "
+    style="background-image: url('/static/images/background.jpg');
+    background-repeat: no-repeat;background-size: cover;
+    background-position: center;background-attachment: fixed;height: 100%;">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card text-center border-0 shadow">
+                <div class="card-header bg-success text-white fw-bold fs-4">
+                    WeChat connecte le monde
+                </div>
+                <div class="card-body bg-white">
+                    <h5 class="card-title text-success fs-3 fw-semibold mb-3">Partagez vos rêves</h5>
+                    <p class="card-text text-muted text-justify">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis distinctio doloribus
+                        aspernatur, excepturi hic tenetur
+                        consequuntur a, eius velit debitis porro laboriosam nihil commodi? Quos aut possimus officiis
+                        mollitia explicabo.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    </p>
+                    <a href="{% url 'blog' %}" class="btn btn-primary mt-3 px-4">News</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container py-5 bg-light">
+    <div class="row justify-content-center g-4">
+
+        <!-- Carte 1 -->
+        <div class="col-lg-10 mb-5">
+            <div class="card border-0 shadow-sm text-center h-100 ">
+                <div class="card-header bg-primary text-white fw-bold fs-4">
+                    Le Forum
+                </div>
+                <div class="card-body bg-white">
+                    <h5 class="card-title text-primary fw-semibold fs-3 mb-3">Inspirez votre quotidien</h5>
+                    <p class="card-text text-muted text-justify">
+                        Découvrez des idées innovantes et des projets captivants pour enrichir votre expérience
+                        personnelle et professionnelle.
+                    </p>
+                    <a href="{% url 'forum'  %}" class="btn btn-primary mt-3 px-4">Participez au forum</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carte 2 -->
+        <div class="col-lg-10 mb-5">
+            <div class="card border-0 shadow-sm text-center h-100">
+                <div class="card-header bg-primary text-white fw-bold fs-4">
+                    Chat
+                </div>
+                <div class="card-body bg-white">
+                    <h5 class="card-title text-primary fw-semibold fs-3 mb-3">Connectez-vous au monde</h5>
+                    <p class="card-text text-muted text-justify">
+                        Explorez des contenus enrichissants et connectez-vous à une communauté mondiale partageant les
+                        mêmes valeurs et intérêts.
+                    </p>
+                    <a href="{% url 'chat'  user.id  %}" class="btn btn-primary mt-3 px-4">Lires vos messages</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carte 3 -->
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm text-center h-100">
+                <div class="card-header bg-primary text-white fw-bold fs-4">
+                    Blog
+                </div>
+                <div class="card-body bg-white">
+                    <h5 class="card-title text-primary fw-semibold fs-3 mb-3">Avancez avec confiance</h5>
+                    <p class="card-text text-muted text-justify">
+                        Prenez des décisions éclairées grâce à des ressources fiables et des outils conçus pour vous
+                        guider vers le succès.
+                    </p>
+                    <a href="{% url 'blog' %}" class="btn btn-primary mt-3 px-4">Voir les dernieres publications</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% include 'footer.html' %}
+{% endblock %}

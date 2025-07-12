@@ -1,0 +1,45 @@
+/* .home-container .row .col-lg-10 .card .card-body{
+    background-image: url('/static/images/background.jpg');
+    /* background-color: blue; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: larger;
+    color: white;
+} */
+.home-container .card {
+    margin: 0px;
+    height: auto;
+}
+h1{
+    font-size: larger;
+    color: black;
+    font-size: 20px;
+}
+.nav-container {
+    margin: 0 auto;
+    padding: 10px 0; /* Ajuste les marges verticales ici */
+}
+
+.navbar {
+    margin: 0 auto;
+}
+div.footer_container{
+    padding: 20px;
+    color: red;
+}
+/* .container .navbar .navbar-brand.logo p:nth-child(2){
+    font-size: 100px;
+   color: black;
+} */
+ .card {
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 123, 255, 0.2);
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }

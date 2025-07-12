@@ -1,0 +1,46 @@
+<div class="container-fluid bg-white shadow-sm py-2 sticky-top" style="box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+  
+        <!-- LOGO -->
+        <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}" style="font-weight: bold; font-size: 28px;">
+          <span style="color: blue;">W</span><span>e</span>
+          <span style="color: orange;">C</span><span>h</span><span>a</span><span>t</span>
+        </a>
+  
+        <!-- Toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+          aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- NAV CONTENT -->
+        <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+            <li class="nav-item px-3">
+              <a class="nav-link fw-semibold text-dark" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link fw-semibold text-dark" href="{% url 'blog' %}">Blog</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link fw-semibold text-dark" href="{% url 'forum' %}">Forum</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link fw-semibold text-dark" href="{% url 'amis' user.id %}">Chat</a>
+            </li>
+            <li class="nav-item px-3">
+              <a class="nav-link fw-semibold text-dark" href="{% url 'profile' user.id %}">Profil</a>
+            </li>
+          </ul>
+  
+          <!-- Search -->
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 rounded-pill" type="search" placeholder="Rechercher" aria-label="Search">
+            <button class="btn btn-outline-primary rounded-pill ml-1" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+  

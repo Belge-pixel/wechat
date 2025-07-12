@@ -1,0 +1,16 @@
+# render.yaml
+services:
+  - type: web
+    name: wechat
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn wechat.wsgi"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: false
+      - key: DJANGO_SETTINGS_MODULE
+        value: wechat.settings
+      - key: PYTHON_VERSION
+        value: 3.10
